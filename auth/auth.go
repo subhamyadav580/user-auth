@@ -5,6 +5,7 @@ import (
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/mattn/go-sqlite3"
+	"github.com/subhamyadav580/user-auth/auth/db/sqlite"
 )
 
 func Signup() {
@@ -15,5 +16,6 @@ func Signup() {
 	} else {
 		defer sql_instance.Close()
 		fmt.Println("sqlInstance", sql_instance)
+		sqlite.CreateTables()
 	}
 }

@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	auth.Signup()
+	auth.SetupTables()
 }

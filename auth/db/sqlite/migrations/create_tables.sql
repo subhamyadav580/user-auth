@@ -1,10 +1,13 @@
 -- query: CreateUserTable
 CREATE TABLE IF NOT EXISTS Accounts (
     user_id TEXT NOT NULL,
+    email TEXT,
+    username TEXT,
     hash_password TEXT NOT NULL,
     updated_at DATETIME NOT NULL,
     created_at DATETIME NOT NULL,
-    PRIMARY KEY (user_id)
+    PRIMARY KEY (user_id),
+    CHECK(email IS NOT NULL OR username IS NOT NULL)
 );
 
 -- query: CreateUserProfile

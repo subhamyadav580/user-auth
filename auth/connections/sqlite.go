@@ -2,6 +2,7 @@ package connections
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
 
 	"github.com/jmoiron/sqlx"
@@ -45,6 +46,7 @@ func (sq *Sqlite3Connection) CreateTable(tx *sqlx.Tx, schema string) error {
 	return err
 }
 
-// func (sq *Sqlite3Connection) Create(tableName string, data interface{}) {
-// 	// sq.db.Exec()
-// }
+func (sq *Sqlite3Connection) Create(tx *sqlx.Tx, query string, data interface{}) (sql.Result, error) {
+	fmt.Println("data to insert: ", data)
+	return tx.NamedExec(query, data)
+}

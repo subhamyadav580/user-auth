@@ -2,6 +2,7 @@ package connections
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -16,5 +17,5 @@ type DBConnection interface {
 	RollbackTransaction(tx *sqlx.Tx) error
 
 	CreateTable(tx *sqlx.Tx, schema string) error
-	// Create()
+	Create(tx *sqlx.Tx, query string, data interface{}) (sql.Result, error)
 }

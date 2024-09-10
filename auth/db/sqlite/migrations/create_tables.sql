@@ -23,3 +23,38 @@ CREATE TABLE IF NOT EXISTS UserProfile (
     CHECK(email IS NOT NULL OR username IS NOT NULL),
     FOREIGN KEY(user_id) REFERENCES Accounts(user_id)
 );
+
+
+-- query: CreateRoles
+CREATE TABLE IF NOT EXISTS Roles (
+    role_id TEXT,
+    name TEXT,
+    FOREIGN KEY(role_id)
+)
+
+-- query: CreatePermissions
+CREATE TABLE IF NOT EXISTS Permissions (
+    permission_id TEXT,
+    name TEXT,
+    FOREIGN KEY(permission_id)
+)
+
+-- query: CreateUserRoleTable
+CREATE TABLE IF NOT EXISTS UserRole (
+    user_id TEXT NOT NULL,
+    role_id TEXT,
+    FOREIGN KEY(role_id)
+)
+
+-- query: CreateUserPermissionTable
+CREATE TABLE IF NOT EXISTS RolePermissions (
+    role_id TEXT NOT NULL,
+    permission_name TEXT,
+)
+
+-- query: CreateRefreshTokenTable
+CREATE TABLE IF NOT EXISTS RefreshTokenTable (
+    user_id TEXT NOT NULL,
+    token TEXT NOT NULL,
+    expires_at DATETIME NOT NULL
+)
